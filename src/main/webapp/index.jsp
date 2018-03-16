@@ -7,7 +7,11 @@
 <title>Proyecto ASR</title>
 </head>
 <body>
+<<<<<<< Upstream, based on origin/master
 <h1>Ejemplo de Proyecto de ASR BEGO =)  con DevOps y tal</h1>
+=======
+<h1>Ejemplo de Proyecto de ASR BEGO =) con DevOps</h1>
+>>>>>>> 54e0dc0 Gracias Javi 
 <hr />
 <p>Opciones de la clase de ASR:</p>
 <ul>
