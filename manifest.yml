@@ -8,4 +8,4 @@ applications:
   host: asrBMC01
   domain: eu-gb.mybluemix.net
   services:
-  - asrDCBCloudantNoSQL
+  - asrBMCCloudantNoSQL
