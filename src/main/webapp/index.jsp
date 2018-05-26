@@ -7,7 +7,6 @@
 <title>Proyecto ASR</title>
 </head>
 <body>
-<<<<<<< Upstream, based on origin/master
 <h1>Ejemplo de Proyecto de ASR BEGO =)  con DevOps y tal</h1>
 <h1>Ejemplo de Proyecto de ASR BEGO =) con DevOps</h1>
 <hr />
