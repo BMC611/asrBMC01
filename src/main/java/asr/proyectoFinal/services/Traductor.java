@@ -18,7 +18,7 @@ public class Traductor
 		LanguageTranslator service = new LanguageTranslator();
 		
 		service.setUsernameAndPassword(USER_NAME, PASSWORD);
-		TranslateOptions translateOptions = new TranslateOptions.Builder().addText(palabra).modelId("en-es").build();
+		TranslateOptions translateOptions = new TranslateOptions.Builder().addText(palabra).modelId("es-en").build();
 		TranslationResult translationResult = service.translate(translateOptions).execute();
 		
 		System.out.println(translationResult);
