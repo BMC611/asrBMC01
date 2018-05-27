@@ -12,9 +12,14 @@
 <p>Opciones de la clase de ASR:</p>
 <ul>
 <li><a href="listar">Listar</a></li>
-<li>Insertar palabra en español: <!-- href="insertar?palabra=hola" -->
-	<input type="text" name="palabra" id="palabra">
-	<button type="button" formaction="insertar"> Insertar en BD </button>
+<li>
+	<form role="formInsert" action="insertar" method="POST" >
+        <div class="form-group">
+            <label>Insertar palabra en español:</label>
+            <input type="text" name="palabra" id="formInsertPalabra">
+        	<button type="submit" class="btn">Insertar en BD</button>
+        </div>
+    </form>
 </li>
 </ul>
 </body>
