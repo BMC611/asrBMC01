@@ -12,7 +12,9 @@
 <p>Opciones de la clase de ASR:</p>
 <ul>
 <li><a href="listar">Listar</a></li>
-<li><a href="insertar?palabra=hola">Insertar</a></li>
+<li><a href="insertar?palabra=hola">Insertar palabra en español: </a></li>
+<li><input type="text" name="insert"></li>
+<button type="submit">Insertar en BD</button><br>
 </ul>
 </body>
 </html>
