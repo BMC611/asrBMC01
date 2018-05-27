@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import asr.proyectoFinal.dao.CloudantPalabraStore;
 import asr.proyectoFinal.dominio.Palabra;
+import asr.proyectoFinal.services.Traductor;
 
 /**
  * Servlet implementation class Controller
@@ -46,7 +47,9 @@ public class Controller extends HttpServlet {
 				
 			case "/insertar":
 				Palabra palabra = new Palabra();
-				String parametro = request.getParameter("palabra");
+				
+				//String parametro = request.getParameter("palabra");
+				String parametro = Traductor.translate(request.getParameter("palabra"));
 
 				if(parametro==null)
 				{
