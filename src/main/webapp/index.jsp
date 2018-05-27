@@ -16,7 +16,7 @@
 	<form role="formInsert" action="insertar" method="POST" >
         <div class="form-group">
             <label>Insertar palabra en español:</label>
-            <input type="text" name="palabra" id="formInsertPalabra">
+            <input type="text" name="palabra" id="formInsertPalabra"> 
         	<button type="submit" class="btn">Insertar en BD</button>
         </div>
     </form>
