@@ -23,13 +23,13 @@
     <form role="formLeer" action="leer" method="POST" >
         <div class="form-group">
             <label>Insertar palabra en ingles:</label>
-            <input type="text" name="texto" id="formInsertPalabra">
+            <input type="text" name="texto" id="formLeerTexto">
         	<button type="submit" class="btn">Leer</button>
         </div>
-        <div>
+        <!-- <div>
        		<object type="text/html" data="https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize?voice=es-LA_SofiaVoice&text=Text%20to%20synthesize" width="330 px" height="860 px">
         	</object>
-		</div>
+		</div>-->
     </form>
 </li>
 </ul>
