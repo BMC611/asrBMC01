@@ -3,7 +3,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,15 +50,39 @@ public class TxtToSpeech
 		 //String voice = "en-US_AllisonVoice";
 		//boolean download = "true".equalsIgnoreCase(req.getParameter("download"));
 
-		InputStream stream = null;
+		/*InputStream stream = null;
 		InputStream in = null;
-		OutputStream out = null;	
+		OutputStream out = null;	*/
+		//Map<String, String> headers = new HashMap<String, String>();
+		//headers.put("X-Watson-Learning-Opt-Out", "true");
 		try {
-			TextToSpeech textService = new TextToSpeech(USER_NAME, PASSWORD);
-	         //String voice = "en-US_AllisonVoice";//req.getParameter("voice");
-	         String text = req.getParameter("texto");//req.getParameter("text");
+			TextToSpeech service = new TextToSpeech();
+			service.setUsernameAndPassword(USER_NAME, PASSWORD);
+			//service.setDefaultHeaders(headers);
+			
+			
+				  String text = "Hello world";
+				  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.WAV).execute();
+				  InputStream in = WaveUtils.reWriteWaveHeader(stream);
+				  OutputStream out = resp.getOutputStream();//new FileOutputStream("hello_world.wav");
+				  byte[] buffer = new byte[1024];
+				  int length;
+				  while ((length = in.read(buffer)) > 0) {
+				    out.write(buffer, 0, length);
+				  }
+				  out.close();
+				  in.close();
+				  stream.close();
+				}
+				catch (Exception e) {
+				  e.printStackTrace();
+				}
+			
+			/*
+	         String text = "Hello my friend"; //req.getParameter("leerTexto");
 	         //AudioFormat format = new AudioFormat("audio/ogg; codecs=opus");
-	         stream = textService.synthesize(text, Voice.ES_LAURA).execute();
+	         Voice voice = service.getVoice("en-US_AllisonVoice").execute(); //Voice.ES_LAURA
+	         stream = service.synthesize(text, voice).execute();
 	         //in = (InputStream) textService.synthesize(text, new Voice(voice, null, null));
 	         
 	         in = WaveUtils.reWriteWaveHeader(stream);
@@ -81,7 +107,7 @@ public class TxtToSpeech
 		    in.close();
 		    stream.close();
 		    
-			    
+			    */
 		
 		/*
 		try {
