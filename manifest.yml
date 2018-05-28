@@ -5,7 +5,7 @@ applications:
   path: target/asrTomcatEjemploCloudant.war
   memory: 256M
   instances: 1
-  host: asrBMC01
+  host: asrBMCPrcFinal
   domain: eu-gb.mybluemix.net
   services:
   - asrBMCCloudantNoSQL
