@@ -20,6 +20,17 @@
         	<button type="submit" class="btn">Insertar en BD</button>
         </div>
     </form>
+    <form role="formLeer" action="leer" method="POST" >
+        <div class="form-group">
+            <label>Insertar palabra en ingles:</label>
+            <input type="text" name="palabra" id="formInsertPalabra">
+        	<button type="submit" class="btn">Leer</button>
+        </div>
+        <div>
+       		<object type="text/html" data="https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize?voice=es-LA_SofiaVoice&text=Text%20to%20synthesize" width="330 px" height="860 px">
+        	</object>
+		</div>
+    </form>
 </li>
 </ul>
 </body>

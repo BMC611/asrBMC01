@@ -46,6 +46,11 @@ public class Controller extends HttpServlet {
 					out.println("Palabras en la BD Cloudant:<br />" + store.getAll());
 				break;
 				
+			case "/leer":
+				TxtToSpeech.txtToSpeech(request, response);
+				out.println("Lectura realizada");
+				break;
+				
 			case "/insertar":
 				Palabra palabra = new Palabra();
 				
