@@ -48,6 +48,10 @@ public class Controller extends HttpServlet {
 				
 			case "/leer":
 				TxtToSpeech.txtToSpeech(request, response);
+				out.println("<audio autoplay=\"\" id=\"audio\" class=\"audio \" controls=\"\" "
+						+ "src=\"blob:https://text-to-speech-demo.ng.bluemix.net/b8b5c6e7-1a5b-4147-99eb-7bce7b1520ee\" type=\"audio/ogg;codecs=opus\">Your browser does not support the audio element.</audio>)");
+				out.println("<audio autoplay=\"\" id=\"audio\" class=\"audio \" controls=\"\" "
+						+ "src=\"blob:https://text-to-speech-demo.ng.bluemix.net/b8b5c6e7-1a5b-4147-99eb-7bce7b1520ee\" type=\"audio/ogg;codecs=opus\">Your browser does not support the audio element.</audio>)");
 				out.println("Lectura realizada");
 				break;
 				
