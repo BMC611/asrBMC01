@@ -54,7 +54,7 @@ public class TxtToSpeech
 		try {
 			TextToSpeech textService = new TextToSpeech(USER_NAME, PASSWORD);
 	         //String voice = "en-US_AllisonVoice";//req.getParameter("voice");
-	         String text = req.getParameter("palabra");//req.getParameter("text");
+	         String text = req.getParameter("texto");//req.getParameter("text");
 	         //AudioFormat format = new AudioFormat("audio/ogg; codecs=opus");
 	         stream = (InputStream) textService.synthesize(text, Voice.ES_LAURA);
 	         //in = (InputStream) textService.synthesize(text, new Voice(voice, null, null));
