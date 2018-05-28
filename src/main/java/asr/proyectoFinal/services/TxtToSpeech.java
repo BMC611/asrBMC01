@@ -3,6 +3,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,6 +85,10 @@ public class TxtToSpeech extends HttpServlet {
 				  while ((length = in.read(buffer)) > 0) {
 				    out.write(buffer, 0, length);
 				  }
+				  PrintWriter outhtml = resp.getWriter();
+				  outhtml.println("<html><head><meta charset=\"UTF-8\"></head><body>");
+				  outhtml.println("<audio src=\"hello_world.wav\"></audio>");
+				  outhtml.println("</html>");
 				  out.close();
 				  in.close();
 				  stream.close();
@@ -165,5 +170,9 @@ public class TxtToSpeech extends HttpServlet {
 			traduccionPrimera = traducciones.get(0).getAsJsonObject().get("translation").getAsString();
 		
 		return traduccionPrimera;*/
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 }
