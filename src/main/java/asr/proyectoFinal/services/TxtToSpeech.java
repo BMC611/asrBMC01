@@ -64,7 +64,8 @@ public class TxtToSpeech extends HttpServlet {
 		//TextToSpeech textService = new TextToSpeech(IBM_WATSON_USERNAME, IBM_WATSON_PASSWORD);
 		 //String voice = "en-US_AllisonVoice";
 		//boolean download = "true".equalsIgnoreCase(req.getParameter("download"));
-
+		PrintWriter outhtml = resp.getWriter();
+		  outhtml.println("<html><head><meta charset=\"UTF-8\"></head><body>");
 		/*InputStream stream = null;
 		InputStream in = null;
 		OutputStream out = null;	*/
@@ -85,8 +86,7 @@ public class TxtToSpeech extends HttpServlet {
 				  while ((length = in.read(buffer)) > 0) {
 				    out.write(buffer, 0, length);
 				  }
-				  PrintWriter outhtml = resp.getWriter();
-				  outhtml.println("<html><head><meta charset=\"UTF-8\"></head><body>");
+				  
 				  outhtml.println("<audio src=\"hello_world.wav\"></audio>");
 				  outhtml.println("</html>");
 				  out.close();
