@@ -55,7 +55,6 @@ public class TxtToSpeech extends HttpServlet {
 		//List<Voice> voices = service.getVoices().execute();
 		//System.out.println(voices);
 		
-		//Voice voice = textService.getVoice("en-US_AllisonVoice").execute();
 		//es-ES_LauraVoice
 		//fr-FR_ReneeVoice
 		//pt-BR_IsabelaVoice
@@ -75,7 +74,8 @@ public class TxtToSpeech extends HttpServlet {
 			TextToSpeech service = new TextToSpeech();
 			service.setUsernameAndPassword(USER_NAME, PASSWORD);
 			//service.setDefaultHeaders(headers);
-			
+			Voice voice = service.getVoice("en-US_AllisonVoice").execute();
+
 			
 				  String text = "Hello world";
 				  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.WAV).execute();
