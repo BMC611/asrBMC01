@@ -77,7 +77,7 @@ public class TxtToSpeech extends HttpServlet {
 			//Voice voice = service.getVoice("en-US_AllisonVoice").execute();
 
 			String ruta = req.getServletContext().getRealPath("");
-				  String text = req.getParameter("speech");
+				  String text = "hello world";//req.getParameter("speech");
 				  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.WAV).execute();
 				  InputStream in = WaveUtils.reWriteWaveHeader(stream);
 				  OutputStream out = new FileOutputStream(ruta+"/hello_world.wav"); //resp.getOutputStream();
