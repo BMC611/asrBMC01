@@ -1,5 +1,6 @@
 package asr.proyectoFinal.services;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
@@ -36,6 +37,20 @@ public class TxtToSpeech
 		//pt-BR_IsabelaVoice
 		//System.out.println(voice);
 		
+		TextToSpeech textService = new TextToSpeech(IBM_WATSON_USERNAME, IBM_WATSON_PASSWORD);
+		 //String voice = "en-US_AllisonVoice";
+		 String text = "This is Just awesome And i am going to experience the effect";
+		 //String format = "audio/mp3";
+		 try {
+		     InputStream in = textService.synthesize(text, Voice.EN_ALLISON, AudioFormat.OGG_VORBIS)
+		             .execute();
+		     System.out.println(in.available());
+		 } catch (IOException e) {
+		     // TODO Auto-generated catch block
+		     e.printStackTrace();
+		 }
+		
+		/*
 		try {
 			  String text = "Hello world";
 			  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.WAV).execute();
@@ -52,7 +67,7 @@ public class TxtToSpeech
 			}
 			catch (Exception e) {
 			  e.printStackTrace();
-			}
+			}*/
 		
 		
 		
