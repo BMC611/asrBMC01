@@ -33,9 +33,9 @@
     </form>
     <form role="formLeer" action="toTxt" method="POST" >
         <div class="form-group">
-            <label>Insertar palabra en ingles:</label>
-            <input type="text" name="leerTexto" id="formLeerTexto">
-        	<button type="submit" class="btn">Leer</button>
+            <label>Insertar nota de voz en español:</label>
+            <input type="text" name="audio" id="formLeerTexto">
+        	<button type="submit" class="btn">toTxt</button>
         </div>
         <!-- <div>
        		<object type="text/html" data="https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize?voice=es-LA_SofiaVoice&text=Text%20to%20synthesize" width="330 px" height="860 px">

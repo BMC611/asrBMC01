@@ -26,7 +26,7 @@ import asr.proyectoFinal.services.TxtToSpeech;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/listar", "/insertar", "/hablar", "/toSpeech"})
+@WebServlet(urlPatterns = {"/listar", "/insertar", "/hablar"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -46,21 +46,21 @@ public class Controller extends HttpServlet {
 					out.println("Palabras en la BD Cloudant:<br />" + store.getAll());
 				break;
 				
-			case "/toSpeech":
+			/*case "/toSpeech":
 				TxtToSpeech.txtToSpeech(request, response);
 				out.println("<audio autoplay=\"\" id=\"audio\" class=\"audio \" controls=\"\" "
 						+ "src=\"blob:https://text-to-speech-demo.ng.bluemix.net/b8b5c6e7-1a5b-4147-99eb-7bce7b1520ee\" type=\"audio/ogg;codecs=opus\">Your browser does not support the audio element.</audio>)");
 				out.println("<audio autoplay=\"\" id=\"audio\" class=\"audio \" controls=\"\" "
 						+ "src=\"blob:https://text-to-speech-demo.ng.bluemix.net/b8b5c6e7-1a5b-4147-99eb-7bce7b1520ee\" type=\"audio/ogg;codecs=opus\">Your browser does not support the audio element.</audio>)");
 				out.println("Lectura realizada");
-				break;
+				break;*/
 				
 			case "/insertar":
 				Palabra palabra = new Palabra();
 				
 				//String parametro = request.getParameter("palabra");
 				String parametro = Traductor.translate(request.getParameter("palabra"));
-				TxtToSpeech.txtToSpeech(request, response);
+				//TxtToSpeech.txtToSpeech(request, response);
 				
 				if(parametro==null)
 				{

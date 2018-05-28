@@ -7,6 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,13 +28,23 @@ import com.ibm.watson.developer_cloud.language_translator.v2.model.TranslateOpti
 import com.ibm.watson.developer_cloud.language_translator.v2.model.TranslateOptions;
 import com.ibm.watson.developer_cloud.language_translator.v2.model.TranslationResult;
 
-public class TxtToSpeech
-{
+/**
+ * Servlet implementation class Controller
+ */
+@MultipartConfig
+@WebServlet(urlPatterns = {"/toSpeech"})
+
+public class TxtToSpeech extends HttpServlet {
+
+	private static final long serialVersionUID = 3L;
 	public final static String USER_NAME = "51cffcad-3cb8-4c54-aa28-fd1f0c04b502";
 	public final static String PASSWORD = "uNDSYwnfUJ8v";
+	//private static Logger logger = Logger.getLogger(DemoServlet.class.getName());
 	
-	public static void txtToSpeech(HttpServletRequest req, HttpServletResponse resp) throws IOException
-	{
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
+	  {
+//	public static void txtToSpeech(HttpServletRequest req, HttpServletResponse resp) throws IOException
+//	{
 		
 		//TextToSpeech textService = new TextToSpeech(USER_NAME, PASSWORD);
 
@@ -64,7 +78,7 @@ public class TxtToSpeech
 				  String text = "Hello world";
 				  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.WAV).execute();
 				  InputStream in = WaveUtils.reWriteWaveHeader(stream);
-				  OutputStream out = resp.getOutputStream();//new FileOutputStream("hello_world.wav");
+				  OutputStream out = new FileOutputStream("hello_world.wav"); //resp.getOutputStream();
 				  byte[] buffer = new byte[1024];
 				  int length;
 				  while ((length = in.read(buffer)) > 0) {
