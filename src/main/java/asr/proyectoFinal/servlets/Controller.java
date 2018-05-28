@@ -47,7 +47,7 @@ public class Controller extends HttpServlet {
 				break;
 				
 			case "/leer":
-				TxtToSpeech.txtToSpeech(request, response);
+				//TxtToSpeech.txtToSpeech(request, response);
 				out.println("Lectura realizada");
 				break;
 				
