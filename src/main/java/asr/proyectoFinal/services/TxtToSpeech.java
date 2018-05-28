@@ -34,7 +34,7 @@ public class TxtToSpeech
 		//es-ES_LauraVoice
 		//fr-FR_ReneeVoice
 		//pt-BR_IsabelaVoice
-		System.out.println(voice);
+		//System.out.println(voice);
 		
 		try {
 			  String text = "Hello world";
