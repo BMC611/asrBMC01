@@ -87,7 +87,7 @@ public class TxtToSpeech extends HttpServlet {
 				    out.write(buffer, 0, length);
 				  }
 				  
-				  outhtml.println("<audio controls autoplay> <source src=\""+ruta+"/hello_world.wav\" type=\"audio/wav\"></audio>");
+				  outhtml.println("<audio controls autoplay> <source src=\""+ruta+"/hello_world.wav\" ></audio>");
 				  outhtml.println("<p>\""+ruta+"\"/hello_world.wav\"</p></html>");
 				  out.close();
 				  in.close();
