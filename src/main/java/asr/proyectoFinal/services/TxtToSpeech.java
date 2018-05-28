@@ -37,12 +37,12 @@ public class TxtToSpeech
 		//pt-BR_IsabelaVoice
 		//System.out.println(voice);
 		
-		TextToSpeech textService = new TextToSpeech(IBM_WATSON_USERNAME, IBM_WATSON_PASSWORD);
+		//TextToSpeech textService = new TextToSpeech(IBM_WATSON_USERNAME, IBM_WATSON_PASSWORD);
 		 //String voice = "en-US_AllisonVoice";
 		 String text = "This is Just awesome And i am going to experience the effect";
 		 //String format = "audio/mp3";
 		 try {
-		     InputStream in = textService.synthesize(text, Voice.EN_ALLISON, AudioFormat.OGG_VORBIS)
+		     InputStream in = service.synthesize(text, Voice.EN_ALLISON, AudioFormat.OGG_VORBIS)
 		             .execute();
 		     System.out.println(in.available());
 		 } catch (IOException e) {
