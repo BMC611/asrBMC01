@@ -80,14 +80,14 @@ public class TxtToSpeech extends HttpServlet {
 				  String text = "Hello world";
 				  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.WAV).execute();
 				  InputStream in = WaveUtils.reWriteWaveHeader(stream);
-				  OutputStream out = new FileOutputStream("hello_world.wav"); //resp.getOutputStream();
+				  OutputStream out = new FileOutputStream("c:\\hello_world.wav"); //resp.getOutputStream();
 				  byte[] buffer = new byte[1024];
 				  int length;
 				  while ((length = in.read(buffer)) > 0) {
 				    out.write(buffer, 0, length);
 				  }
 				  
-				  outhtml.println("<audio controls autoplay> <source src=\"hello_world.wav\" ></audio>");
+				  outhtml.println("<audio controls autoplay> <source src=\"c:\\hello_world.wav\" ></audio>");
 				  outhtml.println("</html>");
 				  out.close();
 				  in.close();
