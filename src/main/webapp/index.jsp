@@ -30,6 +30,7 @@
        		<object type="text/html" data="https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize?voice=es-LA_SofiaVoice&text=Text%20to%20synthesize" width="330 px" height="860 px">
         	</object>
 		</div>-->
+		<audio src="hello_world.wav"></audio>
     </form>
     <form role="formLeer" action="toTxt" method="POST" >
         <div class="form-group">
