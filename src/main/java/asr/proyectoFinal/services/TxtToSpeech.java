@@ -23,15 +23,15 @@ public class TxtToSpeech
 	public final static String USER_NAME = "51cffcad-3cb8-4c54-aa28-fd1f0c04b502";
 	public final static String PASSWORD = "uNDSYwnfUJ8v";
 	
-	public static void txtToSpeech(String palabra)
+	public static void txtToSpeech(req,resp)
 	{
 		
-		TextToSpeech service = new TextToSpeech(USER_NAME, PASSWORD);
+		//TextToSpeech textService = new TextToSpeech(USER_NAME, PASSWORD);
 		
 		//List<Voice> voices = service.getVoices().execute();
 		//System.out.println(voices);
 		
-		Voice voice = service.getVoice("en-US_AllisonVoice").execute();
+		//Voice voice = textService.getVoice("en-US_AllisonVoice").execute();
 		//es-ES_LauraVoice
 		//fr-FR_ReneeVoice
 		//pt-BR_IsabelaVoice
@@ -39,16 +39,36 @@ public class TxtToSpeech
 		
 		//TextToSpeech textService = new TextToSpeech(IBM_WATSON_USERNAME, IBM_WATSON_PASSWORD);
 		 //String voice = "en-US_AllisonVoice";
-		 String text = "This is Just awesome And i am going to experience the effect";
-		 //String format = "audio/mp3";
-		 try {
-		     InputStream in = service.synthesize(text, Voice.EN_ALLISON, AudioFormat.OGG_VORBIS)
-		             .execute();
-		     System.out.println(in.available());
-		 } catch (IOException e) {
-		     // TODO Auto-generated catch block
-		     e.printStackTrace();
-		 }
+		//boolean download = "true".equalsIgnoreCase(req.getParameter("download"));
+
+		InputStream in = null;
+		OutputStream out = null;	
+		try {
+			TextToSpeech textService = new TextToSpeech(USER_NAME, PASSWORD);
+	         String voice = "en-US_AllisonVoice";//req.getParameter("voice");
+	         String text = req.getParameter("palabra");//req.getParameter("text");
+	         String format = "audio/ogg; codecs=opus";
+	         in = textService.synthesize(text, new Voice(voice, null, null), format);
+	         
+	         //if (download) {
+	             resp.setHeader("content-disposition",
+	                            "attachment; filename=transcript.ogg");
+	        // }
+	         
+	         out = resp.getOutputStream();
+	         byte[] buffer = new byte[2048];
+	         int read;
+	         while ((read = in.read(buffer)) != -1) {
+	             out.write(buffer, 0, read);
+	         }
+		} catch (Exception e) {
+			// Log something and return an error message
+			logger.log(Level.SEVERE, "got error: " + e.getMessage(), e);
+			resp.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
+		} finally {
+		    close(in);
+		    close(out);
+		}
 		
 		/*
 		try {
