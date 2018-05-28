@@ -91,6 +91,11 @@
 			<artifactId>java-sdk</artifactId>
 			<version>4.1.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.ibm.watson.developer_cloud</groupId>
+			<artifactId>text-to-speech</artifactId>
+			<version>5.2.0</version>
+		</dependency>
   </dependencies>
 
   <build>
