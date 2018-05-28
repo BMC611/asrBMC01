@@ -26,7 +26,7 @@ import asr.proyectoFinal.services.TxtToSpeech;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/listar", "/insertar", "/hablar"})
+@WebServlet(urlPatterns = {"/listar", "/insertar", "/hablar", "/leer"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
