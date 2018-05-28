@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import asr.proyectoFinal.dao.CloudantPalabraStore;
 import asr.proyectoFinal.dominio.Palabra;
 import asr.proyectoFinal.services.Traductor;
+import asr.proyectoFinal.services.TxtToSpeech;
 
 /**
  * Servlet implementation class Controller
@@ -47,7 +48,7 @@ public class Controller extends HttpServlet {
 				
 			case "/insertar":
 				Palabra palabra = new Palabra();
-				
+				TxtToSpeech.txtToSpeech(palabra);
 				//String parametro = request.getParameter("palabra");
 				String parametro = Traductor.translate(request.getParameter("palabra"));
 
