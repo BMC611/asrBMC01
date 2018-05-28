@@ -74,10 +74,10 @@ public class TxtToSpeech extends HttpServlet {
 			TextToSpeech service = new TextToSpeech();
 			service.setUsernameAndPassword(USER_NAME, PASSWORD);
 			//service.setDefaultHeaders(headers);
-			Voice voice = service.getVoice("en-US_AllisonVoice").execute();
+			//Voice voice = service.getVoice("en-US_AllisonVoice").execute();
 
 			
-				  String text = "Hello world";
+				  String text = req.getParameter("speech");
 				  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.WAV).execute();
 				  InputStream in = WaveUtils.reWriteWaveHeader(stream);
 				  OutputStream out = new FileOutputStream("c:\\hello_world.wav"); //resp.getOutputStream();

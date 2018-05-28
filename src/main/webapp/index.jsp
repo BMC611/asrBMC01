@@ -23,7 +23,7 @@
     <form role="formLeer" action="toSpeech" method="POST" >
         <div class="form-group">
             <label>Insertar palabra en ingles:</label>
-            <input type="text" name="leerTexto" id="formLeerTexto">
+            <input type="text" name="speech" id="formLeerTexto">
         	<button type="submit" class="btn">Leer</button>
         </div>
         <!-- <div>
