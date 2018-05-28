@@ -26,7 +26,7 @@ public class TxtToSpeech
 	public final static String USER_NAME = "51cffcad-3cb8-4c54-aa28-fd1f0c04b502";
 	public final static String PASSWORD = "uNDSYwnfUJ8v";
 	
-	public static void txtToSpeech(HttpServletRequest req, HttpServletResponse resp)
+	public static void txtToSpeech(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{
 		
 		//TextToSpeech textService = new TextToSpeech(USER_NAME, PASSWORD);
@@ -53,8 +53,8 @@ public class TxtToSpeech
 			TextToSpeech textService = new TextToSpeech(USER_NAME, PASSWORD);
 	         String voice = "en-US_AllisonVoice";//req.getParameter("voice");
 	         String text = req.getParameter("palabra");//req.getParameter("text");
-	         String format = "audio/ogg; codecs=opus";
-	         in = textService.synthesize(text, new Voice(voice, null, null), format);
+	         //AudioFormat format = new AudioFormat("audio/ogg; codecs=opus");
+	         in = (InputStream) textService.synthesize(text, new Voice(voice, null, null));
 	         
 	         //if (download) {
 	             resp.setHeader("content-disposition",
@@ -69,12 +69,12 @@ public class TxtToSpeech
 	         }
 		} catch (Exception e) {
 			// Log something and return an error message
-			logger.log(Level.SEVERE, "got error: " + e.getMessage(), e);
+			System.out.println(e.getMessage());
 			resp.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
-		} finally {
-		    close(in);
-		    close(out);
 		}
+		    in.close();
+		    out.close();
+		
 		
 		/*
 		try {
