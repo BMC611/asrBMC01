@@ -48,10 +48,11 @@ public class Controller extends HttpServlet {
 				
 			case "/insertar":
 				Palabra palabra = new Palabra();
-				TxtToSpeech.txtToSpeech(palabra);
+				
 				//String parametro = request.getParameter("palabra");
 				String parametro = Traductor.translate(request.getParameter("palabra"));
-
+				TxtToSpeech.txtToSpeech(parametro);
+				
 				if(parametro==null)
 				{
 					out.println("usage: /insertar?palabra=palabra_a_traducir");
