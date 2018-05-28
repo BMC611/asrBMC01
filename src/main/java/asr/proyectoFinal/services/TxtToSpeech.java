@@ -5,6 +5,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -23,7 +26,7 @@ public class TxtToSpeech
 	public final static String USER_NAME = "51cffcad-3cb8-4c54-aa28-fd1f0c04b502";
 	public final static String PASSWORD = "uNDSYwnfUJ8v";
 	
-	public static void txtToSpeech(req,resp)
+	public static void txtToSpeech(HttpServletRequest req, HttpServletResponse resp)
 	{
 		
 		//TextToSpeech textService = new TextToSpeech(USER_NAME, PASSWORD);
