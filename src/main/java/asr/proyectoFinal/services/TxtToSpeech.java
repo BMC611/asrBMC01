@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.ibm.watson.developer_cloud.http.ServiceCall;
 import com.ibm.watson.developer_cloud.language_translator.v2.LanguageTranslator;
 import com.ibm.watson.developer_cloud.language_translator.v2.util.Language;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.TextToSpeech;
@@ -47,33 +48,39 @@ public class TxtToSpeech
 		 //String voice = "en-US_AllisonVoice";
 		//boolean download = "true".equalsIgnoreCase(req.getParameter("download"));
 
+		InputStream stream = null;
 		InputStream in = null;
 		OutputStream out = null;	
 		try {
 			TextToSpeech textService = new TextToSpeech(USER_NAME, PASSWORD);
-	         String voice = "en-US_AllisonVoice";//req.getParameter("voice");
+	         //String voice = "en-US_AllisonVoice";//req.getParameter("voice");
 	         String text = req.getParameter("palabra");//req.getParameter("text");
 	         //AudioFormat format = new AudioFormat("audio/ogg; codecs=opus");
-	         in = (InputStream) textService.synthesize(text, new Voice(voice, null, null));
+	         stream = (InputStream) textService.synthesize(text, Voice.ES_LAURA);
+	         //in = (InputStream) textService.synthesize(text, new Voice(voice, null, null));
 	         
+	         in = WaveUtils.reWriteWaveHeader(stream);
 	         //if (download) {
-	             resp.setHeader("content-disposition",
-	                            "attachment; filename=transcript.ogg");
+	       //      resp.setHeader("content-disposition",
+	         //                   "attachment; filename=transcript.ogg");
 	        // }
 	         
 	         out = resp.getOutputStream();
-	         byte[] buffer = new byte[2048];
-	         int read;
-	         while ((read = in.read(buffer)) != -1) {
-	             out.write(buffer, 0, read);
+	         byte[] buffer = new byte[1024];//[2048];
+	         int length;
+	         while ((length = in.read(buffer)) != -1) {
+	             out.write(buffer, 0, length);
 	         }
 		} catch (Exception e) {
 			// Log something and return an error message
 			System.out.println(e.getMessage());
 			resp.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
 		}
-		    in.close();
+		    
 		    out.close();
+		    in.close();
+		    stream.close();
+		    
 		
 		
 		/*
