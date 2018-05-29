@@ -89,9 +89,17 @@ public class TxtToSpeech extends HttpServlet {
 			        } else {
 			            req.setCharacterEncoding("UTF-8");
 		             
-		                String  text="hello world";//req.getParameter("speech");
+		                String  text=req.getParameter("speech");
 		                text=URLEncoder.encode(text, "UTF-8");
-		                String voice="en-US_AllisonVoice"; //es-LA_SofiaVoice
+		                String  voiceName=req.getParameter("voice");
+		                String voice=new String(); //es-LA_SofiaVoice
+
+		                if(voiceName.equals("espanol"))
+			                voice="es-LA_SofiaVoice"; //espanol
+		                else
+			                voice="en-US_AllisonVoice"; //ingles
+
+
 		                String url = baseURL + "/v1/synthesize" + "?voice=" + voice +"&text=";
 		               /*
 					  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.OGG).execute();
@@ -104,10 +112,9 @@ public class TxtToSpeech extends HttpServlet {
 					    out.write(buffer, 0, length);
 					  }*/
 					  
-					  outhtml.println("<video controls autoplay> <source src=\""+ruta+"/audio.ogg\" type=\"audio/ogg\"></video>");
+					  //outhtml.println("<video controls autoplay> <source src=\""+ruta+"/audio.ogg\" type=\"audio/ogg\"></video>");
 					  outhtml.println("<video controls autoplay> <source src=\""+url+text+"\" type=\"audio/ogg\"></video>");
 					  //outhtml.println("<p>\""+file.getAbsolutePath()+" "+file.getParent()+"</p></html>"); 
-					  outhtml.println("<p>\""+ruta+"/audio.wav\"</p></html>"); 
 					 /* out.close(); 
 					  in.close();
 					  stream.close();*/

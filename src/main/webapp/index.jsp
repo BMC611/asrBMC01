@@ -23,7 +23,7 @@
     <form role="formLeer" action="toSpeech" method="POST" >
         <div class="form-group">
             <label>Insertar palabra:</label>
-            <select name="idiomas">
+            <select name="voice">
 			    <option value="ingles">Inglés</option>
 			    <option value="espanol">Español</option>
 			    <option value="aleman">Aleman</option>
