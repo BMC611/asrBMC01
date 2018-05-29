@@ -109,7 +109,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		}
 	}
 		
-	String traduccion= Traductor.translate(resultado);
+	String traduccion= Traductor.translate(resultado,"ingles");
      //SpeechResults speechResults = service.recognize(dest, options).execute();
 	ToneAnalyzer serviceTone = new ToneAnalyzer("2017-09-21"); 
 	serviceTone.setUsernameAndPassword(USER_NAME, PASSWORD);
