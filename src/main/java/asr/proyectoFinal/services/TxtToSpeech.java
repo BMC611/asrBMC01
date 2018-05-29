@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,25 +80,43 @@ public class TxtToSpeech extends HttpServlet {
 			//Voice voice = service.getVoice("en-US_AllisonVoice").execute();
 
 			//String ruta = req.getServletContext().getRealPath("/");
-			String ruta = "/home/vcap/app/wlp/usr/servers/defaultServer/apps";
-				  String text = "hello world";//req.getParameter("speech");
-				  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.WAV).execute();
-				  InputStream in = WaveUtils.reWriteWaveHeader(stream);
-				  File file = new File(ruta+"/hello_world.wav");
-				  OutputStream out = new FileOutputStream(file); //resp.getOutputStream();
-				  byte[] buffer = new byte[1024];
-				  int length;
-				  while ((length = in.read(buffer)) > 0) {
-				    out.write(buffer, 0, length);
-				  }
-				  
-				  outhtml.println("<audio controls autoplay> <source src=\""+ruta+"/hello_world.wav\" type=\"audio/wav\"></audio>");
-				  outhtml.println("<audio controls autoplay> <source src=\"/synthesize?text="+text+"\" type=\"audio/wav\"></audio>");
-				  outhtml.println("<p>\""+file.getAbsolutePath()+" "+file.getParent()+"</p></html>"); 
-				  outhtml.println("<p>\""+ruta+"/hello_world.wav\"</p></html>");
-				  out.close(); 
-				  in.close();
-				  stream.close();
+			String ruta = "/home/vcap/app/wlp/usr/servers/defaultServer/apps";				  
+				  String baseURL = "https://stream.watsonplatform.net/text-to-speech/api";
+
+
+			        if (req.getParameter("text") == null) {
+			            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+			        } else {
+			            req.setCharacterEncoding("UTF-8");
+		             
+		                String  text="hello world";//req.getParameter("speech");
+		                text=URLEncoder.encode(text, "UTF-8");
+		                String voice="&voice=en-US_AllisonVoice";
+		                String queryStr=text+voice;
+		                String url = baseURL + "/v1/synthesize";
+		                if (queryStr != null) {
+		                    url += "?text=" + queryStr;
+		                }
+		                URI uri = new URI(url).normalize();
+
+					  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.WAV).execute();
+					  InputStream in = WaveUtils.reWriteWaveHeader(stream);
+					  File file = new File(ruta+"/hello_world.wav");
+					  OutputStream out = new FileOutputStream(file); //resp.getOutputStream();
+					  byte[] buffer = new byte[1024];
+					  int length;
+					  while ((length = in.read(buffer)) > 0) {
+					    out.write(buffer, 0, length);
+					  }
+					  
+					  outhtml.println("<audio controls autoplay> <source src=\""+ruta+"/hello_world.wav\" type=\"audio/wav\"></audio>");
+					  outhtml.println("<audio controls autoplay> <source src=\""+url+"\" type=\"audio/wav\"></audio>");
+					  outhtml.println("<p>\""+file.getAbsolutePath()+" "+file.getParent()+"</p></html>"); 
+					  outhtml.println("<p>\""+ruta+"/hello_world.wav\"</p></html>");
+					  out.close(); 
+					  in.close();
+					  stream.close();
+					}
 				}
 				catch (Exception e) {
 				  e.printStackTrace();
