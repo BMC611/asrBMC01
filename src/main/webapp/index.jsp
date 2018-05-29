@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,7 +17,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-clean-blog/3.3.7/css/clean-blog.min.css" rel="stylesheet">
+    <link href="css/clean-blog.min.css" rel="stylesheet">
 
 
 </head>
@@ -41,7 +43,7 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <header class="masthead" style="background-image: url('http://acerestetica.com.ar/img/home-bg.jpg')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -197,6 +199,19 @@
 							  </select>
 				            <input type="text" name="speech" id="formLeerTexto">
 				        	<button href="https://51cffcad-3cb8-4c54-aa28-fd1f0c04b502:uNDSYwnfUJ8v@stream.watsonplatform.net/text-to-speech/api/v1/synthesize?voice=en-US_AllisonVoice&text=hi" class="btn">Leer</button>
+				       		<c:if test="${sessionScope.valor==true}">
+                                <div class="alert alert-success fade in alertIndex">
+                                    <a class="close" data-dismiss="alert" aria-label="close" title="close"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                    Esta acci&oacute;n se ha realizado con <strong>&eacute;xito!</strong>
+                                </div>
+                            </c:if>
+                            <c:if test="${sessionScope.valor==true}">
+                                <div class="alert alert-success fade in alertIndex">
+                                    <a class="close" data-dismiss="alert" aria-label="close" title="close"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                    Esta acci&oacute;n se ha realizado con <strong>&eacute;xito!</strong>
+                                </div>
+                            </c:if>
+				       
 				        </div>
 				        </form>
 				    
