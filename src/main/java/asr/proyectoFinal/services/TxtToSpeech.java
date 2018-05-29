@@ -93,7 +93,7 @@ public class TxtToSpeech extends HttpServlet {
 		                text=URLEncoder.encode(text, "UTF-8");
 		                String voice="en-US_AllisonVoice"; //es-LA_SofiaVoice
 		                String url = baseURL + "/v1/synthesize" + "?voice=" + voice +"&text=";
-		               
+		               /*
 					  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.OGG).execute();
 					  InputStream in = WaveUtils.reWriteWaveHeader(stream);
 					  File file = new File(ruta+"/audio.ogg");
@@ -102,15 +102,15 @@ public class TxtToSpeech extends HttpServlet {
 					  int length;
 					  while ((length = in.read(buffer)) > 0) {
 					    out.write(buffer, 0, length);
-					  }
+					  }*/
 					  
 					  outhtml.println("<video controls autoplay> <source src=\""+ruta+"/audio.ogg\" type=\"audio/ogg\"></video>");
-					  outhtml.println("<video controls autoplay> <source src=\""+url+URLEncoder.encode(text,java.nio.charset.StandardCharsets.UTF_8.toString())+"\" type=\"audio/ogg\"></video>");
-					  outhtml.println("<p>\""+file.getAbsolutePath()+" "+file.getParent()+"</p></html>"); 
+					  outhtml.println("<video controls autoplay> <source src=\""+url+text+"\" type=\"audio/ogg\"></video>");
+					  //outhtml.println("<p>\""+file.getAbsolutePath()+" "+file.getParent()+"</p></html>"); 
 					  outhtml.println("<p>\""+ruta+"/audio.wav\"</p></html>"); 
-					  out.close(); 
+					 /* out.close(); 
 					  in.close();
-					  stream.close();
+					  stream.close();*/
 					}
 				}
 				catch (Exception e) {
