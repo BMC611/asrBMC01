@@ -49,32 +49,10 @@ public class TxtToSpeech extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	  {
-//	public static void txtToSpeech(HttpServletRequest req, HttpServletResponse resp) throws IOException
-//	{
-		
-		//TextToSpeech textService = new TextToSpeech(USER_NAME, PASSWORD);
 
-		//Voice voces = textService.listVoices().execute();
-		
-		
-		//List<Voice> voices = service.getVoices().execute();
-		//System.out.println(voices);
-		
-		//es-ES_LauraVoice
-		//fr-FR_ReneeVoice
-		//pt-BR_IsabelaVoice
-		//System.out.println(voice);
-		
-		//TextToSpeech textService = new TextToSpeech(IBM_WATSON_USERNAME, IBM_WATSON_PASSWORD);
-		 //String voice = "en-US_AllisonVoice";
-		//boolean download = "true".equalsIgnoreCase(req.getParameter("download"));
 		PrintWriter outhtml = resp.getWriter();
 		  outhtml.println("<html><head><meta charset=\"UTF-8\"></head><body>");
-		/*InputStream stream = null;
-		InputStream in = null;
-		OutputStream out = null;	*/
-		//Map<String, String> headers = new HashMap<String, String>();
-		//headers.put("X-Watson-Learning-Opt-Out", "true");
+		
 		try {
 			TextToSpeech service = new TextToSpeech();
 			service.setUsernameAndPassword(USER_NAME, PASSWORD);
@@ -126,7 +104,7 @@ public class TxtToSpeech extends HttpServlet {
 		                outhtml.println("<a href=\""+url+text+"\"> Escuchar audio </a>");
 
 					  //outhtml.println("<video controls autoplay> <source src=\""+ruta+"/audio.ogg\" type=\"audio/ogg\"></video>");
-					  outhtml.println("<video controls autoplay> <source src=\""+url+text+"\" type=\"audio/ogg\"></video>");
+					  //outhtml.println("<video controls autoplay> <source src=\""+url+text+"\" type=\"audio/ogg\"></video>");
 					  //outhtml.println("<p>\""+file.getAbsolutePath()+" "+file.getParent()+"</p></html>"); 
 					 /* out.close(); 
 					  in.close();

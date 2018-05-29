@@ -172,19 +172,8 @@
 							    <option value="japo">Japonés</option>
 							  </select>
 				            <input type="text" name="speech" id="formLeerTexto">
-				        	<button href="https://51cffcad-3cb8-4c54-aa28-fd1f0c04b502:uNDSYwnfUJ8v@stream.watsonplatform.net/text-to-speech/api/v1/synthesize?voice=en-US_AllisonVoice&text=hi" class="btn">Leer</button>
-				       		<c:if test="${sessionScope.valor==true}">
-                                <div class="alert alert-success fade in alertIndex">
-                                    <a class="close" data-dismiss="alert" aria-label="close" title="close"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                    Esta acci&oacute;n se ha realizado con <strong>&eacute;xito!</strong>
-                                </div>
-                            </c:if>
-                            <c:if test="${sessionScope.valor==true}">
-                                <div class="alert alert-success fade in alertIndex">
-                                    <a class="close" data-dismiss="alert" aria-label="close" title="close"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                    Esta acci&oacute;n se ha realizado con <strong>&eacute;xito!</strong>
-                                </div>
-                            </c:if>
+				        	<button type="Submit" class="btn">Leer</button>
+				       		
 				       
 				        </div>
 				        </form>
