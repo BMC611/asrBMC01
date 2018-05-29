@@ -120,7 +120,7 @@ public class TxtToSpeech extends HttpServlet {
 					  byte[] buffer = new byte[1024];
 					  int length;
 					  while ((length = in.read(buffer)) > 0) {
-					    out.write(buffer, 0, length);
+					    out.write(buffer, 0, length); 
 					  }*/
 					  
 					  //outhtml.println("<video controls autoplay> <source src=\""+ruta+"/audio.ogg\" type=\"audio/ogg\"></video>");
