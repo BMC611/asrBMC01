@@ -96,10 +96,13 @@ public class TxtToSpeech extends HttpServlet {
 		                String  voiceName=req.getParameter("voice");
 		                String voice=new String(); //es-LA_SofiaVoice
 
-		                if(voiceName.equals("espanol"))
-			                voice="es-LA_SofiaVoice"; //espanol
-		                else
-			                voice="en-US_AllisonVoice"; //ingles
+		                switch(voiceName) {
+		                	case "espanol": voice="es-LA_SofiaVoice"; break;	
+		                	case "aleman": voice="es-LA_SofiaVoice"; break;
+		                	case "japo": voice="es-LA_SofiaVoice"; break;
+		                	default: 		voice="en-US_AllisonVoice";			//ingles
+		                }
+		                
 		               // service.get
 		               /* URL baseURLL=new URL("https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize"); 
 		                URLConnection uc = baseURLL.openConnection(); 
