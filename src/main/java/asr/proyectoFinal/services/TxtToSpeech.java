@@ -89,19 +89,14 @@ public class TxtToSpeech extends HttpServlet {
 			        } else {
 			            req.setCharacterEncoding("UTF-8");
 		             
-		                String  text="hello world";//req.getParameter("speech");
+		                String  text=req.getParameter("speech");
 		                text=URLEncoder.encode(text, "UTF-8");
-		                String voice="&voice=en-US_AllisonVoice";
-		                String queryStr=text+voice;
-		                String url = baseURL + "/v1/synthesize";
-		                if (queryStr != null) {
-		                    url += "?text=" + queryStr;
-		                }
-		                URI uri = new URI(url).normalize();
-
-					  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.WAV).execute();
+		                String voice="en-US_AllisonVoice"; //es-LA_SofiaVoice
+		                String url = baseURL + "/v1/synthesize" + "?texto=voice=" + voice +"&";
+		               
+					  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.OGG).execute();
 					  InputStream in = WaveUtils.reWriteWaveHeader(stream);
-					  File file = new File(ruta+"/hello_world.wav");
+					  File file = new File(ruta+"/audio.ogg");
 					  OutputStream out = new FileOutputStream(file); //resp.getOutputStream();
 					  byte[] buffer = new byte[1024];
 					  int length;
@@ -109,10 +104,10 @@ public class TxtToSpeech extends HttpServlet {
 					    out.write(buffer, 0, length);
 					  }
 					  
-					  outhtml.println("<audio controls autoplay> <source src=\""+ruta+"/hello_world.wav\" type=\"audio/wav\"></audio>");
-					  outhtml.println("<audio controls autoplay> <source src=\""+URLEncoder.encode(url,java.nio.charset.StandardCharsets.UTF_8.toString())+"\" type=\"audio/wav\"></audio>");
+					  outhtml.println("<video controls autoplay> <source src=\""+ruta+"/audio.ogg\" type=\"audio/ogg\"></video>");
+					  outhtml.println("<video controls autoplay> <source src=\""+url+URLEncoder.encode(text,java.nio.charset.StandardCharsets.UTF_8.toString())+"\" type=\"audio/ogg\"></video>");
 					  outhtml.println("<p>\""+file.getAbsolutePath()+" "+file.getParent()+"</p></html>"); 
-					  outhtml.println("<p>\""+ruta+"/hello_world.wav\"</p></html>");
+					  outhtml.println("<p>\""+ruta+"/audio.wav\"</p></html>");
 					  out.close(); 
 					  in.close();
 					  stream.close();
