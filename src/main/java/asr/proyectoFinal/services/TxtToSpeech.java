@@ -84,7 +84,7 @@ public class TxtToSpeech extends HttpServlet {
 				  String baseURL = "https://stream.watsonplatform.net/text-to-speech/api";
 
 
-			        if (req.getParameter("text") == null) {
+			        if (req.getParameter("speech") == null) {
 			            req.getRequestDispatcher("/index.jsp").forward(req, resp);
 			        } else {
 			            req.setCharacterEncoding("UTF-8");
