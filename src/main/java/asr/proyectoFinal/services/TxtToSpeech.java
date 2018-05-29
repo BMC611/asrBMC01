@@ -89,10 +89,10 @@ public class TxtToSpeech extends HttpServlet {
 			        } else {
 			            req.setCharacterEncoding("UTF-8");
 		             
-		                String  text=req.getParameter("speech");
+		                String  text="hello world";//req.getParameter("speech");
 		                text=URLEncoder.encode(text, "UTF-8");
 		                String voice="en-US_AllisonVoice"; //es-LA_SofiaVoice
-		                String url = baseURL + "/v1/synthesize" + "?texto=voice=" + voice +"&";
+		                String url = baseURL + "/v1/synthesize" + "?voice=" + voice +"&text=";
 		               
 					  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.OGG).execute();
 					  InputStream in = WaveUtils.reWriteWaveHeader(stream);
