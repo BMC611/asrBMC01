@@ -38,6 +38,20 @@
 		</div>-->
     </form>
     
+    <form role="formLeer" action="toSpeech" method="POST" >
+        <div class="form-group">
+            <label>Insertar palabra:</label>
+            <select name="voice">
+			    <option value="ingles">Inglés</option>
+			    <option value="espanol">Español</option>
+			    <option value="frances">Francés</option>
+			    <option value="japo">Japonés</option>
+			  </select>
+            <input type="text" name="speech" id="formLeerTexto">
+        	<button href="https://51cffcad-3cb8-4c54-aa28-fd1f0c04b502:uNDSYwnfUJ8v@stream.watsonplatform.net/text-to-speech/api/v1/synthesize?voice=en-US_AllisonVoice&text=hi" class="btn">Leer</button>
+        </div>
+        </form>
+    
 </li>
 </ul>
 </body>

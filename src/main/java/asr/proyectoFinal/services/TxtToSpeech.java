@@ -120,11 +120,13 @@ public class TxtToSpeech extends HttpServlet {
 					  byte[] buffer = new byte[1024];
 					  int length;
 					  while ((length = in.read(buffer)) > 0) {
-					    out.write(buffer, 0, length); 
+					    out.write(buffer, 0, length);
 					  }*/
 					  
+		                outhtml.println("<a href=\""+url+text+"\"> Escuchar audio </a>");
+
 					  //outhtml.println("<video controls autoplay> <source src=\""+ruta+"/audio.ogg\" type=\"audio/ogg\"></video>");
-					  outhtml.println("<video controls autoplay> <source src=\""+uc.getContentType()+"?voice=" + voice +"&text="+text+"\" type=\"audio/ogg\"></video>");
+					  outhtml.println("<video controls autoplay> <source src=\""+url+text+"\" type=\"audio/ogg\"></video>");
 					  //outhtml.println("<p>\""+file.getAbsolutePath()+" "+file.getParent()+"</p></html>"); 
 					 /* out.close(); 
 					  in.close();
