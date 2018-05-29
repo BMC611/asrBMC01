@@ -151,7 +151,7 @@
 							    <option value="ingles">Inglés</option>
 							    <option value="espanol">Español</option>
 							    <option value="frances">Francés</option>
-							    <option value="japo">Japonés</option>
+							    <option value="japo">Japonés</option> 
 							  </select>
 				            <input type="text" name="speech" id="formLeerTexto">
 				        	<button type="Submit" class="btn">Leer</button>
