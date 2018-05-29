@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
@@ -81,7 +83,7 @@ public class TxtToSpeech extends HttpServlet {
 
 			//String ruta = req.getServletContext().getRealPath("/");
 			String ruta = "/home/vcap/app/wlp/usr/servers/defaultServer/apps";				  
-				  String baseURL = "https://stream.watsonplatform.net/text-to-speech/api";
+				  String baseURL = "stream.watsonplatform.net/text-to-speech/api";
 
 
 			        if (req.getParameter("speech") == null) {
@@ -98,9 +100,14 @@ public class TxtToSpeech extends HttpServlet {
 			                voice="es-LA_SofiaVoice"; //espanol
 		                else
 			                voice="en-US_AllisonVoice"; //ingles
-
-
-		                String url = baseURL + "/v1/synthesize" + "?voice=" + voice +"&text=";
+		               // service.get
+		               /* URL baseURLL=new URL("https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize"); 
+		                URLConnection uc = baseURLL.openConnection(); 
+		                String userpass = USER_NAME+":"+PASSWORD; 
+		                String basicAuth = "Basic " + javax.xml.bind.DatatypeConverter.printBase64Binary(userpass.getBytes());
+		                uc.setRequestProperty("Authorization", basicAuth); */
+		                
+		                String url = "https://"+USER_NAME+":"+PASSWORD +"@" + baseURL + "/v1/synthesize" + "?voice=" + voice +"&text=";
 		               /*
 					  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.OGG).execute();
 					  InputStream in = WaveUtils.reWriteWaveHeader(stream);
