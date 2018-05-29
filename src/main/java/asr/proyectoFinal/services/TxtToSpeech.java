@@ -1,4 +1,5 @@
 package asr.proyectoFinal.services;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -81,7 +82,8 @@ public class TxtToSpeech extends HttpServlet {
 				  String text = "hello world";//req.getParameter("speech");
 				  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.WAV).execute();
 				  InputStream in = WaveUtils.reWriteWaveHeader(stream);
-				  OutputStream out = new FileOutputStream(ruta+"/hello_world.wav"); //resp.getOutputStream();
+				  File file = new File(ruta+"/hello_world.wav");
+				  OutputStream out = new FileOutputStream(file); //resp.getOutputStream();
 				  byte[] buffer = new byte[1024];
 				  int length;
 				  while ((length = in.read(buffer)) > 0) {
@@ -89,6 +91,7 @@ public class TxtToSpeech extends HttpServlet {
 				  }
 				  
 				  outhtml.println("<audio controls autoplay> <source src=\""+ruta+"/hello_world.wav\" type=\"audio/wav\"></audio>");
+				  outhtml.println("<p>\""+file.getAbsolutePath()+" "+file.getParent()+"</p></html>");
 				  outhtml.println("<p>\""+ruta+"/hello_world.wav\"</p></html>");
 				  out.close(); 
 				  in.close();
