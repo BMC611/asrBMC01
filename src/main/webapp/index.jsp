@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -143,23 +142,6 @@
 				            <input type="text" name="palabra" id="formInsertPalabra">
 				        	<button type="submit" class="btn">Submit</button>
 				        </div>
-				    </form>
-				    <form role="formLeer" action="toSpeech" method="POST" >
-				        <div class="form-group">
-				            <label>Insertar palabra:</label>
-				            <select name="voice">
-							    <option value="ingles">Inglés</option>
-							    <option value="espanol">Español</option>
-							    <option value="frances">Francés</option>
-							    <option value="japo">Japonés</option>
-							  </select>
-				            <input type="text" name="speech" id="formLeerTexto">
-				        	<button type="submit" class="btn">Leer</button>
-				        </div>
-				        <!-- <div>
-				       		<object type="text/html" data="https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize?voice=es-LA_SofiaVoice&text=Text%20to%20synthesize" width="330 px" height="860 px">
-				        	</object>
-						</div>-->
 				    </form>
 				    
 				    <form role="formLeer" action="toSpeech" method="POST" >
