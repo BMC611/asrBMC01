@@ -68,7 +68,6 @@ public class TxtToSpeech extends HttpServlet {
 		//TextToSpeech textService = new TextToSpeech(IBM_WATSON_USERNAME, IBM_WATSON_PASSWORD);
 		 //String voice = "en-US_AllisonVoice";
 		//boolean download = "true".equalsIgnoreCase(req.getParameter("download"));
-		
 		PrintWriter outhtml = resp.getWriter();
 		  outhtml.println("<html><head><meta charset=\"UTF-8\"></head><body>");
 		/*InputStream stream = null;
@@ -80,115 +79,61 @@ public class TxtToSpeech extends HttpServlet {
 			TextToSpeech service = new TextToSpeech();
 			service.setUsernameAndPassword(USER_NAME, PASSWORD);
 			//service.setDefaultHeaders(headers);
-			
-			
-				  String text = "Hello world";
-				  /*SynthesizeOptions options = new SynthesizeOptions.Builder()
-						  .text(text)
-						  .voice(SynthesizeOptions.Voice.EN_US_ALLISONVOICE)
-						  .accept(SynthesizeOptions.Accept.AUDIO_WAV)
-						  .build();*/
-				  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.WAV).execute();
-				  //InputStream stream = service.synthesize(options).execute();
-				  InputStream in = WaveUtils.reWriteWaveHeader(stream);
-				  System.out.println(req.getServletContext().getRealPath("")+"hello_world.wav");
-				  OutputStream out = new FileOutputStream(req.getServletContext().getRealPath("")+"hello_world.wav"); //resp.getOutputStream();
-				  byte[] buffer = new byte[1024];
-				  int length;
-				  while ((length = in.read(buffer)) > 0) {
-				    out.write(buffer, 0, length);
-				  }
-				  
-				  outhtml.println("<audio controls autoplay> <source src=\"hello_world.wav\" ></audio>");
-				  outhtml.println("</html>");
-				  out.close();
-				  in.close();
-				  stream.close();
+			//Voice voice = service.getVoice("en-US_AllisonVoice").execute();
+
+			//String ruta = req.getServletContext().getRealPath("/");
+			String ruta = "/home/vcap/app/wlp/usr/servers/defaultServer/apps";				  
+				  String baseURL = "stream.watsonplatform.net/text-to-speech/api";
+
+
+			        if (req.getParameter("speech") == null) {
+			            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+			        } else {
+			            req.setCharacterEncoding("UTF-8");
+		             
+		                String  text=req.getParameter("speech");
+		                text=URLEncoder.encode(text, "UTF-8");
+		                String  voiceName=req.getParameter("voice");
+		                String voice=new String(); //es-LA_SofiaVoice
+
+		                switch(voiceName) {
+		                	case "espanol": voice="es-LA_SofiaVoice"; break;	
+		                	case "frances": voice="fr-FR_ReneeVoice"; break;
+		                	case "japo": voice="ja-JP_EmiVoice"; break;
+		                	default:     voice="en-US_AllisonVoice";			//ingles
+		                }
+		                
+		               // service.get
+		                URL baseURLL=new URL("https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize"); 
+		                URLConnection uc = baseURLL.openConnection(); 
+		                String userpass = USER_NAME+":"+PASSWORD; 
+		                String basicAuth = "Basic " + javax.xml.bind.DatatypeConverter.printBase64Binary(userpass.getBytes());
+		                uc.setRequestProperty("Authorization", basicAuth);
+		                
+		                
+		                String url = "https://"+USER_NAME+":"+PASSWORD +"@" + baseURL + "/v1/synthesize" + "?voice=" + voice +"&text=";
+		               /*
+					  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.OGG).execute();
+					  InputStream in = WaveUtils.reWriteWaveHeader(stream);
+					  File file = new File(ruta+"/audio.ogg");
+					  OutputStream out = new FileOutputStream(file); //resp.getOutputStream();
+					  byte[] buffer = new byte[1024];
+					  int length;
+					  while ((length = in.read(buffer)) > 0) {
+					    out.write(buffer, 0, length);
+					  }*/
+					  
+					  //outhtml.println("<video controls autoplay> <source src=\""+ruta+"/audio.ogg\" type=\"audio/ogg\"></video>");
+					  outhtml.println("<video controls autoplay> <source src=\""+url+text+"\" type=\"audio/ogg\"></video>");
+					  //outhtml.println("<p>\""+file.getAbsolutePath()+" "+file.getParent()+"</p></html>"); 
+					 /* out.close(); 
+					  in.close();
+					  stream.close();*/
+					}
 				}
 				catch (Exception e) {
 				  e.printStackTrace();
 				}
-		
-//		
-//		
-//		
-//		
-//		
-//		PrintWriter outhtml = resp.getWriter();
-//		  outhtml.println("<html><head><meta charset=\"UTF-8\"></head><body>");
-//		/*InputStream stream = null;
-//		InputStream in = null;
-//		OutputStream out = null;	*/
-//		//Map<String, String> headers = new HashMap<String, String>();
-//		//headers.put("X-Watson-Learning-Opt-Out", "true");
-//		try {
-//			TextToSpeech service = new TextToSpeech();
-//			service.setUsernameAndPassword(USER_NAME, PASSWORD);
-//			//service.setDefaultHeaders(headers);
-//			//Voice voice = service.getVoice("en-US_AllisonVoice").execute();
-//
-//			//String ruta = req.getServletContext().getRealPath("/");
-//			String ruta = "/home/vcap/app/wlp/usr/servers/defaultServer/apps";				  
-//				  String baseURL = "stream.watsonplatform.net/text-to-speech/api";
-//
-//
-//			        if (req.getParameter("speech") == null) {
-//			            req.getRequestDispatcher("/index.jsp").forward(req, resp);
-//			        } else {
-//			            req.setCharacterEncoding("UTF-8");
-//		             
-//		                String  text=req.getParameter("speech");
-//		                text=URLEncoder.encode(text, "UTF-8");
-//		                String  voiceName=req.getParameter("voice");
-//		                String voice=new String(); //es-LA_SofiaVoice
-//
-//		                switch(voiceName) {
-//		                	case "espanol": voice="es-LA_SofiaVoice"; break;	
-//		                	case "aleman": voice="es-LA_SofiaVoice"; break;
-//		                	case "japo": voice="es-LA_SofiaVoice"; break;
-//		                	default: 		voice="en-US_AllisonVoice";			//ingles
-//		                }
-//		                
-//		               // service.get
-//		                URL baseURLL=new URL("https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize"); 
-//		                URLConnection uc = baseURLL.openConnection(); 
-//		                String userpass = USER_NAME+":"+PASSWORD; 
-//		                String basicAuth = "Basic " + javax.xml.bind.DatatypeConverter.printBase64Binary(userpass.getBytes());
-//		                uc.setRequestProperty("Authorization", basicAuth);
-//		                
-//		                
-//		                String url = "https://"+USER_NAME+":"+PASSWORD +"@" + baseURL + "/v1/synthesize" + "?voice=" + voice +"&text=";
-//		               /*
-//					  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,AudioFormat.OGG).execute();
-//					  InputStream in = WaveUtils.reWriteWaveHeader(stream);
-//					  File file = new File(ruta+"/audio.ogg");
-//					  OutputStream out = new FileOutputStream(file); //resp.getOutputStream();
-//					  byte[] buffer = new byte[1024];
-//					  int length;
-//					  while ((length = in.read(buffer)) > 0) {
-//					    out.write(buffer, 0, length);
-//					  }*/
-//					  
-//					  //outhtml.println("<video controls autoplay> <source src=\""+ruta+"/audio.ogg\" type=\"audio/ogg\"></video>");
-//					  outhtml.println("<video controls autoplay> <source src=\""+url+text+"\" type=\"audio/ogg\"></video>");
-//					  //outhtml.println("<p>\""+file.getAbsolutePath()+" "+file.getParent()+"</p></html>"); 
-//					 /* out.close(); 
-//					  in.close();
-//					  stream.close();*/
-//					}
-//				}
-//				catch (Exception e) {
-//				  e.printStackTrace();
-//				}
-//		
-//		
-//		
-		
-		
-		
-		
-		
-		
 			
 			/*
 	         String text = "Hello my friend"; //req.getParameter("leerTexto");

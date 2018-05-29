@@ -26,7 +26,7 @@
             <select name="voice">
 			    <option value="ingles">Inglés</option>
 			    <option value="espanol">Español</option>
-			    <option value="aleman">Aleman</option>
+			    <option value="frances">Francés</option>
 			    <option value="japo">Japonés</option>
 			  </select>
             <input type="text" name="speech" id="formLeerTexto">
