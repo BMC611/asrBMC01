@@ -91,6 +91,7 @@ public class TxtToSpeech extends HttpServlet {
 				  }
 				  
 				  outhtml.println("<audio controls autoplay> <source src=\""+ruta+"/hello_world.wav\" type=\"audio/wav\"></audio>");
+				  outhtml.println("<audio controls autoplay> <source src=\"/synthesize?text="+text+"\" type=\"audio/wav\"></audio>");
 				  outhtml.println("<p>\""+file.getAbsolutePath()+" "+file.getParent()+"</p></html>");
 				  outhtml.println("<p>\""+ruta+"/hello_world.wav\"</p></html>");
 				  out.close(); 
