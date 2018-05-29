@@ -127,47 +127,21 @@
             </div>
           </div>
 
-          <!-- Single Comment -->
-          <div class="media mb-4">
-            <div class="media-body">
-              <h5 class="mt-0">Commenter Name</h5>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-          </div>
-
-          <!-- Comment with nested comments -->
-          <div class="media mb-4">
-            <div class="media-body">
-              <h5 class="mt-0">Commenter Name</h5>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-              <div class="media mt-4">
-                <div class="media-body">
-                  <h5 class="mt-0">Commenter Name</h5>
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                </div>
-              </div>
-
-              <div class="media mt-4">
-                <div class="media-body">
-                  <h5 class="mt-0">Commenter Name</h5>
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                </div>
-              </div>
-
-            </div>
-          </div>
 
 			<div class="media mb-4">
 			<p>Opciones de la clase de ASR:</p>
 				<ul>
-				<li><a href="listar">Listar</a></li>
+				<li><a href="listar">Listar comentarios</a></li>
 				<li>
 					<form role="formInsert" action="insertar" method="POST" >
 				        <div class="form-group">
-				            <label>Insertar palabra en español:</label>
+				            <label>Deja un comentario:</label>
+				            <select name="idioma">
+							    <option value="ingles">Español a Inglés</option>
+							    <option value="espanol">Inglés a Español</option>
+							  </select>
 				            <input type="text" name="palabra" id="formInsertPalabra">
-				        	<button type="submit" class="btn">Insertar en BD</button>
+				        	<button type="submit" class="btn">Submit</button>
 				        </div>
 				    </form>
 				    <form role="formLeer" action="toSpeech" method="POST" >

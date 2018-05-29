@@ -59,7 +59,7 @@ public class Controller extends HttpServlet {
 				Palabra palabra = new Palabra();
 				
 				//String parametro = request.getParameter("palabra");
-				String parametro = Traductor.translate(request.getParameter("palabra"));
+				String parametro = Traductor.translate(request.getParameter("palabra"), request.getParameter("idioma"));
 				//TxtToSpeech.txtToSpeech(request, response);
 				
 				if(parametro==null)

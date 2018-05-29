@@ -13,12 +13,19 @@ public class Traductor
 	public final static String USER_NAME = "47d2f216-0717-4d32-a0c9-fd65421a1d78";
 	public final static String PASSWORD = "i6ziPXDo4G1p";
 	
-	public static String translate(String palabra)
+	public static String translate(String palabra, String idioma)
 	{
 		LanguageTranslator service = new LanguageTranslator();
 		
 		service.setUsernameAndPassword(USER_NAME, PASSWORD);
+		
+				
 		TranslateOptions translateOptions = new TranslateOptions.Builder().addText(palabra).modelId("es-en").build();
+		
+		if(idioma.equals("espanol")) {
+			 translateOptions = new TranslateOptions.Builder().addText(palabra).modelId("en-es").build();
+		}
+		
 		TranslationResult translationResult = service.translate(translateOptions).execute();
 		
 		System.out.println(translationResult);
