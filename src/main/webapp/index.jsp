@@ -22,7 +22,13 @@
     </form>
     <form role="formLeer" action="toSpeech" method="POST" >
         <div class="form-group">
-            <label>Insertar palabra en ingles:</label>
+            <label>Insertar palabra:</label>
+            <select name="idiomas">
+			    <option value="ingles">Inglés</option>
+			    <option value="espanol">Español</option>
+			    <option value="aleman">Aleman</option>
+			    <option value="japo">Japonés</option>
+			  </select>
             <input type="text" name="speech" id="formLeerTexto">
         	<button type="submit" class="btn">Leer</button>
         </div>
@@ -31,17 +37,7 @@
         	</object>
 		</div>-->
     </form>
-    <form role="formLeer" action="toTxt" method="POST" >
-        <div class="form-group">
-            <label>Insertar nota de voz en español:</label>
-            <input type="text" name="audio" id="formLeerTexto">
-        	<button type="submit" class="btn">toTxt</button>
-        </div>
-        <!-- <div>
-       		<object type="text/html" data="https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize?voice=es-LA_SofiaVoice&text=Text%20to%20synthesize" width="330 px" height="860 px">
-        	</object>
-		</div>-->
-    </form>
+    
 </li>
 </ul>
 </body>
