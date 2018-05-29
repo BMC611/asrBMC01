@@ -124,7 +124,7 @@ public class TxtToSpeech extends HttpServlet {
 					  }*/
 					  
 					  //outhtml.println("<video controls autoplay> <source src=\""+ruta+"/audio.ogg\" type=\"audio/ogg\"></video>");
-					  outhtml.println("<video controls autoplay> <source src=\""+url+text+"\" type=\"audio/ogg\"></video>");
+					  outhtml.println("<video controls autoplay> <source src=\""+uc.getContentType()+"?voice=" + voice +"&text="+text+"\" type=\"audio/ogg\"></video>");
 					  //outhtml.println("<p>\""+file.getAbsolutePath()+" "+file.getParent()+"</p></html>"); 
 					 /* out.close(); 
 					  in.close();
